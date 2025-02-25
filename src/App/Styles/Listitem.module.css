@@ -1,0 +1,39 @@
+.listItemWrap{
+    height: 50px;
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.611);
+}
+.listItemWrap:first-child{
+    border-top: 1px solid rgba(128, 128, 128, 0.611); 
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 18px; 
+    font-size: 18px;
+}  
+.hiddenCheckbox {
+    display: none;
+}
+  
+.customCheckbox {
+    width: 40px;
+    height: 40px;
+    border: 2px solid rgba(128, 128, 128, 0.611);
+    border-radius: 50px;
+    display: inline-block;
+    position: relative;   
+}
+  
+.hiddenCheckbox:checked + .customCheckbox::after {
+    content: "✔";
+    color: green;
+    font-size: 20px;
+    position: absolute;
+    left: 30%;
+    top: 10px;
+}
