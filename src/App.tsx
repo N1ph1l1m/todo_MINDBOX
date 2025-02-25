@@ -1,26 +1,14 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { WrapTodo } from './Widget/WrapTodo/WrapTodo'
 
+import { WrapTodo } from './Widget/WrapTodo/WrapTodo'
+import styles from "../src/App/Styles/App.module.css"
 
 function App() {
-
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className={styles.wrapApp} >
+        <h1 className={styles.title}>todos</h1>
+        <WrapTodo />
       </div>
-    <WrapTodo />
- 
-
-  
     </>
   )
 }

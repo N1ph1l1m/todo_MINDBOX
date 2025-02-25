@@ -1,8 +1,6 @@
 .wrap{
-    margin: 100px auto;
-    width: 620px;
+    width: 100%;
     min-height: 350px;
-    border: 1px solid red;
     overflow: hidden;
     display: flex;
     flex-direction: column;

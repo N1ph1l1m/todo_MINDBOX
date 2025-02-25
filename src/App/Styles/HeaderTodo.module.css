@@ -17,12 +17,11 @@
 }
 
 .inputTodo{
-    width: 100%;
+    width: 530px;
     height: 100%;
     font-size: 20px;
-    font-style: italic;
 }
 .inputTodo::placeholder{
     color: rgba(128, 128, 128, 0.611);
-
+    font-style: italic;
 }
