@@ -1,23 +1,26 @@
 import styles from "../../App/Styles/Listitem.module.css";
+import { useDispatch} from "react-redux"; 
+import {toggleTodo} from "../../Store/Slice/listSlice/listSlice"
 interface ListItem {
   id: number;
   name: string;
   completed: boolean;
-  toggleTodoCompleted: (id: number) => void;
 }
 export const ListItem = ({
   id,
   name,
   completed,
-  toggleTodoCompleted,
+
 }: ListItem) => {
+  const dispatch = useDispatch();
+  const toogle = () => dispatch(toggleTodo(id))
   return (
     <>
       <div className={styles.listItemWrap}>
         <label className={styles.checkboxLabel}>
           <input
             checked={completed}
-            onChange={() => toggleTodoCompleted(id)}
+            onChange={() => toogle()}
             type="checkbox"
             className={styles.hiddenCheckbox}
           />

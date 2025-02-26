@@ -1,20 +1,23 @@
 import styles from "../../App/Styles/ListTodo.module.css";
 import { ListItem } from "../ListItem/ListItem";
+import { useSelector } from "react-redux";
 interface ListTodoProps {
-  list: { id: number; name: string; completed: boolean }[];
-  toggleTodoCompleted: (id: number) => void;
   all: boolean;
   active: boolean;
   completed: boolean;
 }
+interface TodoItem { 
+  id:number,
+  name:string;
+  completed:boolean
+}
 export const ListTodo = ({
-  list,
-  toggleTodoCompleted,
   all,
   active,
   completed,
 }: ListTodoProps) => {
-  const filteredList = list.filter((item) => {
+  const list = useSelector(state => state.list.list);
+  const filteredList = list.filter((item:TodoItem) => {
     if (all) return true;
     if (active) return !item.completed;
     if (completed) return item.completed;
@@ -27,13 +30,13 @@ export const ListTodo = ({
         {filteredList.length === 0 ? (
           <p className={styles.titleTodo}>Input todo....</p>
         ) : (
-          filteredList.map((item) => (
+          filteredList.map((item:TodoItem) => (
             <ListItem
               key={item.id}
               name={item.name}
               id={item.id}
               completed={item.completed}
-              toggleTodoCompleted={toggleTodoCompleted}
+
             />
           ))
         )}
