@@ -1,7 +1,7 @@
 import styles from "../../App/Styles/ListTodo.module.css";
 import { ListItem } from "../ListItem/ListItem";
 import { useSelector } from "react-redux";
-
+import { RootState } from "../../Store/index";
 interface TodoItem {
   id:number,
   name:string;
@@ -9,8 +9,8 @@ interface TodoItem {
   isDelete:boolean,
 }
 export const ListTodo = () => {
-  const list = useSelector(state => state.list.list);
-  const menu = useSelector(state => state.toggleMenu.menu)
+  const list = useSelector((state: RootState)=> state.list.list);
+  const menu = useSelector((state:RootState) => state.toggleMenu.menu)
   const filteredList = list.filter((item:TodoItem) => {
     switch (menu) {
       case "all":

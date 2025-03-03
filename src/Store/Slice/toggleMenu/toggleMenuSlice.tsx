@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const toggleMenuSlice = createSlice({
     name:"menu",
     initialState:{
-        menu:"all",
+        menu:"all" as string,
     },
     reducers:{
         toggleAll(state){

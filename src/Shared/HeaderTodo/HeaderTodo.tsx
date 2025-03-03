@@ -1,16 +1,17 @@
+import React from "react";
 import { useState } from "react";
 import styles from "../../App/Styles/HeaderTodo.module.css";
 import { useDispatch  , useSelector} from "react-redux";
-import {handlerText , clearText } from "../../Store/Slice/textTodoSlice/textTodoSlice"
-import {createTask} from "../../Store/Slice/listSlice/listSlice"
+import { handlerText,clearText } from "../../Store/Slice/textTodoSlice/textTodoSlice";
+import { createTask } from "../../Store/Slice/listSlice/listSlice";
 import { LuListTodo } from "react-icons/lu";
-
+import { RootState } from "../../Store/index";
 
 export const HeaderTodo = () =>{
     const [nextId, setNextId] = useState(0);
 
 
-    const handlerInputText = (e:ReactChangeEvent<HTMLInputElement>)=>{
+    const handlerInputText = (e: React.ChangeEvent<HTMLInputElement>)=>{
         dispatch(handlerText(e.target.value));
     }
     const createTasks  = ()=>{
@@ -18,7 +19,7 @@ export const HeaderTodo = () =>{
         dispatch(clearText())
         setNextId(nextId + 1);
     }
-    const textTodo = useSelector(state=> state.text.text)
+    const textTodo = useSelector((state:RootState)=> state.text.text)
 
     const dispatch = useDispatch();
 

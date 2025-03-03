@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const textTodoSlice = createSlice({
   name: "text",
   initialState: {
-    text: "",
+    text: "" as string,
   },
   reducers: {
     handlerText(state, action) {

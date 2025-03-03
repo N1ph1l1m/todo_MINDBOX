@@ -1,7 +1,7 @@
 import styles from "../../App/Styles/Listitem.module.css";
 import { useState } from "react";
 import { useDispatch} from "react-redux";
-import {toggleTodo ,  deleteTodo } from "../../Store/Slice/listSlice/listSlice"
+import { toggleTodo,deleteTodo } from "../../Store/Slice/listSlice/listSlice";
 import { FaRegTrashAlt } from "react-icons/fa";
 interface ListItem {
   id: number;

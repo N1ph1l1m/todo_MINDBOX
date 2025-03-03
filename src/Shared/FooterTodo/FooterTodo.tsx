@@ -1,15 +1,15 @@
 
+import { RootState } from "../../Store/index";
 import styles from "../../App/Styles/Footer.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import {clearCompleted} from "../../Store/Slice/listSlice/listSlice";
+import { clearCompleted } from "../../Store/Slice/listSlice/listSlice";
 import  {toggleAll,toggleActive,toggleCompleted, toggleTrash} from "../../Store/Slice/toggleMenu/toggleMenuSlice"
 
 
 
 
 export const FooterTodo = () => {
-  const count  = useSelector(state => state.list.list)
-  const menu = useSelector(state => state.toggleMenu.menu)
+  const count  = useSelector((state:RootState) => state.list.list)
   const dispatch = useDispatch();
 
   const clearComp  =  () => dispatch(clearCompleted())

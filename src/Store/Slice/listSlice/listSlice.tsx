@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface IList{
+  id:number,
+  name:string,
+  completed:boolean,
+  isDelete:boolean,
+}
 const listSlice = createSlice({
   name: "list",
   initialState: {
-    list: [],
+    list: [] as IList[],
   },
   reducers: {
     createTask(state, action) {
       const { id, name } = action.payload;
-      state.list.push({
-        id,
-        name,
-        completed: false,
-        isDelete:false,
-      });
+      state.list.push({ id, name,completed: false,isDelete:false});
     },
     toggleTodo(state, action) {
       state.list = state.list.map((list) =>
