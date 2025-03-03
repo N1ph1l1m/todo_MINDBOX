@@ -3,10 +3,21 @@
   width: 100%;
   padding-top: 5px;
   padding-left: 10px;
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid rgba(128, 128, 128, 0.611);
+  /* border:1px solid red; */
+
 }
 .listItemWrap:first-child {
   border-top: 1px solid rgba(128, 128, 128, 0.611);
+}
+
+.todoTittle{
+  width: 89%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .checkboxLabel {
@@ -15,6 +26,10 @@
   cursor: pointer;
   gap: 18px;
   font-size: 18px;
+  color:red;
+
+  width:90%;
+
 }
 .hiddenCheckbox {
   display: none;
@@ -36,4 +51,8 @@
   position: absolute;
   left: 30%;
   top: 10px;
+}
+.deleteTodo{
+  background-color:transparent;
+  margin-right: 20px;
 }

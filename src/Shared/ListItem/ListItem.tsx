@@ -1,6 +1,8 @@
 import styles from "../../App/Styles/Listitem.module.css";
-import { useDispatch} from "react-redux"; 
-import {toggleTodo} from "../../Store/Slice/listSlice/listSlice"
+import { useState } from "react";
+import { useDispatch} from "react-redux";
+import {toggleTodo ,  deleteTodo } from "../../Store/Slice/listSlice/listSlice"
+import { FaRegTrashAlt } from "react-icons/fa";
 interface ListItem {
   id: number;
   name: string;
@@ -12,11 +14,16 @@ export const ListItem = ({
   completed,
 
 }: ListItem) => {
+    const [isDeleteButton, setDeleteButton] = useState(false);
   const dispatch = useDispatch();
-  const toogle = () => dispatch(toggleTodo(id))
+  const toogle = () => dispatch(toggleTodo(id));
+  const deleteTask  = () => dispatch(deleteTodo(id));
   return (
     <>
-      <div className={styles.listItemWrap}>
+      <div className={styles.listItemWrap}
+      onMouseEnter={()=>{ setDeleteButton(true)}}
+      onMouseLeave={()=>{setDeleteButton(false)}}>
+
         <label className={styles.checkboxLabel}>
           <input
             checked={completed}
@@ -26,6 +33,7 @@ export const ListItem = ({
           />
           <span className={styles.customCheckbox}></span>
           <span
+            className={styles.todoTittle}
             style={{
               textDecoration: completed === true ? "line-through" : "none",
               color:
@@ -34,7 +42,12 @@ export const ListItem = ({
           >
             {name}{" "}
           </span>
+
         </label>
+        <button
+            className={styles.deleteTodo}
+            style = {{display: isDeleteButton ? "block": "none"}}
+            onClick={()=>{deleteTask()}}><FaRegTrashAlt  color="red" size="20"/></button>
       </div>
     </>
   );

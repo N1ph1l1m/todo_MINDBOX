@@ -2,24 +2,29 @@
 import styles from "../../App/Styles/Footer.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {clearCompleted} from "../../Store/Slice/listSlice/listSlice";
+import  {toggleAll,toggleActive,toggleCompleted, toggleTrash} from "../../Store/Slice/toggleMenu/toggleMenuSlice"
 
 
 
-interface FooterTodoProps {
-  toggleMenu: (menuType: string) => void; 
-}
 
-export const FooterTodo = ({  toggleMenu }: FooterTodoProps) => {
+export const FooterTodo = () => {
   const count  = useSelector(state => state.list.list)
+  const menu = useSelector(state => state.toggleMenu.menu)
   const dispatch = useDispatch();
+
   const clearComp  =  () => dispatch(clearCompleted())
+  const menuAll = () => dispatch(toggleAll())
+  const menuActive = () => dispatch(toggleActive())
+  const menuCompleted = () => dispatch(toggleCompleted())
+  const menuTrash = () => dispatch(toggleTrash())
   return (
     <div className={styles.wrapFooter}>
       <p>{count.length} items left</p>
       <ul className={styles.footerMenu}>
-        <li onClick={() => toggleMenu("all")}>All</li>
-        <li onClick={() => toggleMenu("active")}>Active</li>
-        <li onClick={() => toggleMenu("completed")}>Completed</li>
+        <li onClick={() => menuAll() }>All</li>
+        <li onClick={() => menuActive() }>Active</li>
+        <li onClick={() => menuCompleted()}>Completed</li>
+        <li onClick={() => menuTrash()}>Trash</li>
       </ul>
       <button onClick={()=> clearComp()} className={styles.clearCompleted}>Clear Completed</button>
     </div>

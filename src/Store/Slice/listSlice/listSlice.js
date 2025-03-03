@@ -12,6 +12,7 @@ const listSlice = createSlice({
         id,
         name,
         completed: false,
+        isDelete:false,
       });
     },
     toggleTodo(state, action) {
@@ -22,10 +23,16 @@ const listSlice = createSlice({
       );
     },
     clearCompleted(state) {
-      state.list = state.list.filter((items) => !items.completed);
+      state.list = state.list.filter((items) =>  !items.completed);
     },
+    deleteTodo(state,action){
+      state.list = state.list.map((list) =>
+        list.id === action.payload
+          ? { ...list, isDelete:true }
+          : list)
+    }
   },
 });
-export const { createTask, toggleTodo, clearCompleted } = listSlice.actions;
+export const { createTask, toggleTodo, clearCompleted , deleteTodo} = listSlice.actions;
 
 export default listSlice.reducer;
