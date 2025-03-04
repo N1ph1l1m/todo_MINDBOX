@@ -1,16 +1,20 @@
 {
   "name": "todo",
   "private": true,
+  "homepage": "https://N1ph1l1m.github.io/todo_React/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
+    "gh-pages": "^6.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
